@@ -1,0 +1,14 @@
+{{- define "common.template.deployment.demo1-common" -}}
+{{ $ := (index . 0) }}
+{{ $name := (index . 1) }}
+{{ $current := (index . 2) }}
+{{ $base := (index . 3) }}
+
+{{- $_ := set $base "replicas" (default "1" $current.replicas) -}}
+
+{{ include "common.template.deployment" (list $ $name $current $base) }}
+
+{{ println "---" }}
+{{ include "common.template.service" (list $ $name $current $base) }}
+{{- end }}
+

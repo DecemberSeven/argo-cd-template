@@ -1,0 +1,6 @@
+{{ $name := "demo1-app-service" }}
+{{ $current := .Values.demo1_app }}
+{{ $base := .Values.base }}
+
+{{ include "common.template.deployment.demo1-common" (list $ $name $current $base) }}
+
